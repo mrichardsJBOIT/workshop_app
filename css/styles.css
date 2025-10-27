@@ -1,0 +1,72 @@
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+h1, h2, h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Sticky Header */
+#summary-banner {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Component Grid */
+#component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.component-tile {
+  background-color: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.component-tile:hover {
+  transform: scale(1.02);
+  border-color: #aaa;
+}
+
+.component-tile.selected {
+  border-color: #4CAF50;
+  background-color: #e8f5e9;
+}
+
+.component-tile img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Responsive Text */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  #summary-banner {
+    flex-direction: column;
+    align-items: center;
+  }
+}

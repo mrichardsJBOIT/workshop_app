@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Workshop Builder</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const components = document.querySelectorAll(".component");
+            const totals = {
+                cost: 0,
+                sustainability: 0,
+                comfort: 0,
+                carbon: 0
+            };
+
+            function updateBanner() {
+                document.getElementById("total-cost").textContent = "$" + totals.cost;
+                document.getElementById("total-sustainability").textContent = totals.sustainability;
+                document.getElementById("total-comfort").textContent = totals.comfort;
+                document.getElementById("total-carbon").textContent = totals.carbon + " kg CO₂";
+            }
+
+            components.forEach(component => {
+                component.addEventListener("click", function () {
+                    const cost = parseInt(this.dataset.cost);
+                    const sustainability = parseInt(this.dataset.sustainability);
+                    const comfort = parseInt(this.dataset.comfort);
+                    const carbon = parseInt(this.dataset.carbon);
+
+                    if (this.classList.contains("selected")) {
+                        totals.cost -= cost;
+                        totals.sustainability -= sustainability;
+                        totals.comfort -= comfort;
+                        totals.carbon -= carbon;
+                        this.classList.remove("selected");
+                    } else {
+                        totals.cost += cost;
+                        totals.sustainability += sustainability;
+                        totals.comfort += comfort;
+                        totals.carbon += carbon;
+                        this.classList.add("selected");
+                    }
+                    updateBanner();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header id="summary-banner">
+        <h2>Workshop Summary</h2>
+        <p>Total Cost: <span id="total-cost">$0</span></p>
+        <p>Sustainability Score: <span id="total-sustainability">0</span></p>
+        <p>Comfort Score: <span id="total-comfort">0</span></p>
+        <p>Carbon Impact: <span id="total-carbon">0 kg CO₂</span></p>
+    </header>
+    <main>
+        <div class="component-grid">
+            <!-- Component tiles -->
+            <div class="component" data-cost="40" data-sustainability="2" data-comfort="4" data-carbon="20">
+                <img src="images/wall_fans.jpg" alt="Wall Fans">
+                <h3>Wall Fans</h3>
+                <p>Cost: $40</p>
+            </div>
+            <div class="component" data-cost="50" data-sustainability="3" data-comfort="3" data-carbon="-30">
+                <img src="images/window_shading.jpg" alt="Window Shading">
+                <h3>Window Shading</h3>
+                <p>Cost: $50</p>
+            </div>
+            <div class="component" data-cost="80" data-sustainability="4" data-comfort="3" data-carbon="-50">
+                <img src="images/whirly_birds.jpg" alt="Solar Whirly Birds">
+                <h3>Solar Whirly Birds</h3>
+                <p>Cost: $80</p>
+            </div>
+            <div class="component" data-cost="150" data-sustainability="4" data-comfort="5" data-carbon="-80">
+                <img src="images/louvres.jpg" alt="Operable Wall Louvres">
+                <h3>Operable Wall Louvres</h3>
+                <p>Cost: $150</p>
+            </div>
+            <div class="component" data-cost="150" data-sustainability="4" data-comfort="2" data-carbon="-30">
+                <img src="images/rainwater_tanks.jpg" alt="Rainwater Tanks">
+                <h3>Rainwater Tanks</h3>
+                <p>Cost: $150</p>
+            </div>
+            <div class="component" data-cost="150" data-sustainability="4" data-comfort="4" data-carbon="-60">
+                <img src="images/reflective_roofing.jpg" alt="Reflective Roofing">
+                <h3>Reflective Roofing</h3>
+                <p>Cost: $150</p>
+            </div>
+            <div class="component" data-cost="180" data-sustainability="3" data-comfort="3" data-carbon="-20">
+                <img src="images/led_lighting.jpg" alt="LED Lighting">
+                <h3>LED Lighting</h3>
+                <p>Cost: $180</p>
+            </div>
+            <div class="component" data-cost="200" data-sustainability="4" data-comfort="5" data-carbon="-70">
+                <img src="images/awnings.jpg" alt="Shading/Awnings">
+                <h3>Shading/Awnings</h3>
+                <p>Cost: $200</p>
+            </div>
+            <div class="component" data-cost="250" data-sustainability="3" data-comfort="4" data-carbon="-60">
+                <img src="images/roof_insulation.jpg" alt="Roof Insulation">
+                <h3>Roof Insulation</h3>
+                <p>Cost: $250</p>
+            </div>
+            <div class="component" data-cost="300" data-sustainability="3" data-comfort="3" data-carbon="-40">
+                <img src="images/wall_insulation.jpg" alt="Wall Insulation">
+                <h3>Wall Insulation</h3>
+                <p>Cost: $300</p>
+            </div>
+            <div class="component" data-cost="350" data-sustainability="5" data-comfort="2" data-carbon="-40">
+                <img src="images/green_wall.jpg" alt="Green Wall">
+                <h3>Green Wall</h3>
+                <p>Cost: $350</p>
+            </div>
+            <div class="component" data-cost="400" data-sustainability="4" data-comfort="1" data-carbon="50">
+                <img src="images/ev_charger.jpg" alt="EV Charging Station">
+                <h3>EV Charging Station</h3>
+                <p>Cost: $400</p>
+            </div>
+            <div class="component" data-cost="500" data-sustainability="5" data-comfort="3" data-carbon="-200">
+                <img src="images/solar_panels.jpg" alt="Solar Panels">
+                <h3>Solar Panels</h3>
+                <p>Cost: $500</p>
+            </div>
+            <div class="component" data-cost="750" data-sustainability="5" data-comfort="3" data-carbon="-250">
+                <img src="images/solar_battery.jpg" alt="Solar Panels with Battery">
+                <h3>Solar Panels with Battery</h3>
+                <p>Cost: $750</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
